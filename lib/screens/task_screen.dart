@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:to_do_app_sm/screens/add_task_screen.dart';
 
@@ -20,8 +19,11 @@ class _TaskScreenState extends State<TaskScreen> {
         onPressed: () {
           //The arrow function is called the anonymous function
           showModalBottomSheet(
-            isScrollControlled: true,
-              context: context, builder: (context) => const AddTaskScreen());
+            isDismissible: true,
+            enableDrag: true,
+            context: context,
+            builder: (context) => const AddTaskScreen(),
+          );
         },
         backgroundColor: Colors.lightBlueAccent,
         shape: const CircleBorder(),
@@ -78,11 +80,12 @@ class _TaskScreenState extends State<TaskScreen> {
               padding: const EdgeInsets.all(30.0),
               width: double.infinity,
               decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                  )),
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+              ),
               child: const TaskList(),
             ),
           )
@@ -91,4 +94,3 @@ class _TaskScreenState extends State<TaskScreen> {
     );
   }
 }
-

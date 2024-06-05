@@ -1,7 +1,5 @@
-import 'dart:ffi';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 
 class AddTaskScreen extends StatelessWidget {
   const AddTaskScreen({super.key});
@@ -10,7 +8,7 @@ class AddTaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(30.0),
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -21,7 +19,7 @@ class AddTaskScreen extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(
+          const Text(
             'Add Task',
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -30,20 +28,22 @@ class AddTaskScreen extends StatelessWidget {
               fontSize: 20,
             ),
           ),
-          TextField(
+          const SizedBox(height: 10),
+          const TextField(
             autofocus: true,
             textAlign: TextAlign.center,
             decoration: InputDecoration(),
           ),
+          const SizedBox(height: 20),
           TextButton(
             style: ButtonStyle(
-              backgroundColor: WidgetStatePropertyAll(Colors.lightBlueAccent),
+              backgroundColor: const WidgetStatePropertyAll(Colors.lightBlueAccent),
               shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(),
+                const RoundedRectangleBorder(),
               ),
             ),
             onPressed: () {},
-            child: Text(
+            child: const Text(
               'Add Task',
               style: TextStyle(color: Colors.white),
             ),
