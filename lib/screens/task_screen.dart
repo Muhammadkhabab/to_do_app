@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:to_do_app_sm/screens/add_task_screen.dart';
+
+import '../widgets/task_list.dart';
 
 class TaskScreen extends StatefulWidget {
   const TaskScreen({super.key});
@@ -11,21 +14,21 @@ class TaskScreen extends StatefulWidget {
 class _TaskScreenState extends State<TaskScreen> {
   @override
   Widget build(BuildContext context) {
-    int counter = 0;
-    bool isSaving = false;
     return Scaffold(
       backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          setState(() {
-            counter++;
-            isSaving = true;
-          });
-          print(counter);
+          //The arrow function is called the anonymous function
+          showModalBottomSheet(
+            isScrollControlled: true,
+              context: context, builder: (context) => const AddTaskScreen());
         },
         backgroundColor: Colors.lightBlueAccent,
         shape: const CircleBorder(),
-        child: const Icon(Icons.add, color: Colors.white,),
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +40,7 @@ class _TaskScreenState extends State<TaskScreen> {
               right: 30,
               bottom: 30,
             ),
-            child: Column(
+            child: const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CircleAvatar(
@@ -60,7 +63,7 @@ class _TaskScreenState extends State<TaskScreen> {
                 ),
                 SizedBox(height: 10),
                 Text(
-                  '$counter Task',
+                  '0 Task',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
@@ -72,6 +75,7 @@ class _TaskScreenState extends State<TaskScreen> {
           ),
           Expanded(
             child: Container(
+              padding: const EdgeInsets.all(30.0),
               width: double.infinity,
               decoration: const BoxDecoration(
                   color: Colors.white,
@@ -79,9 +83,7 @@ class _TaskScreenState extends State<TaskScreen> {
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20),
                   )),
-              child: const Center(
-                child: Text('List View Builder For The Task'),
-              ),
+              child: const TaskList(),
             ),
           )
         ],
@@ -89,3 +91,4 @@ class _TaskScreenState extends State<TaskScreen> {
     );
   }
 }
+
