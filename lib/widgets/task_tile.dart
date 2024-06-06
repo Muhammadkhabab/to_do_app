@@ -8,8 +8,8 @@ class TaskTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: const Text('This is a task'),
+    return const ListTile(
+      title: Text('This is a task'),
       trailing: TaskCheckBox(),
     );
   }
